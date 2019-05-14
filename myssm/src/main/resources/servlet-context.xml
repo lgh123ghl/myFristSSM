@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/context    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           http://www.springframework.org/schema/mvc     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       ">
+
+	<description>Spring-web MVC配置</description>
+	<!-- 当请求应用程序首页时，将执行/index的跳转请求， 可以利用redirect跳转,比如:"redirect:/page/login"，即跳转到@RequestMapping为page的controller(本示例中为PageController)的login方法，可以在该方法中再定义跳到哪个界面(/index) -->
+	<!--<mvc:view-controller path="/" view-name="login" />-->
+
+
+	<!-- 对所有指定了路径下的controller类进行扫描，以完成Bean创建和自动依赖注入的功能，使得spring能够找到定义的bean，即controller -->
+	<context:component-scan base-package="com.lgh.controller" />
+	<context:component-scan base-package="com.lgh.swagger" />
+    <context:component-scan base-package="com.lgh.service" />
+    <context:component-scan base-package="com.lgh.dao" />
+
+
+
+	<!-- 这里配置spring的注解，使得@Controller @RequestMapping等注解可以被识别 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<constructor-arg value="UTF-8" />
+				</bean>
+				<bean
+					class="org.springframework.http.converter.ResourceHttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>application/json;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="zh" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="10000000" /> <!-- 10M -->
+	</bean>
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<util:list id="beanList">
+				<ref bean="mappingJacksonHttpMessageConverter"/>
+			</util:list>
+		</property>
+	</bean>
+	<bean id="mappingJacksonHttpMessageConverter"
+		  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=utf-8;</value>
+			</list>
+		</property>
+	</bean>
+
+	<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
+	<mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+
+</beans>

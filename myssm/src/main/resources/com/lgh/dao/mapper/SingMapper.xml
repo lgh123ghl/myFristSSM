@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgh.dao.SingDao">
+    <select id="getSignList" resultType="com.common.bean.Sign">
+        SELECT ID id,
+        I_USER_ID userId,
+        C_USER_NAME userName,
+        D_SIGN_TIME signTime,
+        I_SIGN_TYPE signType,
+        I_STATION_ID stationId,
+        C_STATION_NAME stationName,
+        C_ADDRESS address,
+        F_LON lon,
+        F_LAT lat,
+        REMARK remark
+        FROM t_oomm_sign
+    </select>
+</mapper>
