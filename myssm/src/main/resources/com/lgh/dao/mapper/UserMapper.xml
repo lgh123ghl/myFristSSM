@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgh.dao.UserDao">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.lgh.jedis.RedisCache"></cache>
+
+    <select id="selectUserList" resultType="com.common.bean.User">
+        SELECT * FROM t_user
+    </select>
+    <select id="selectDw15MinTjl" resultType="com.common.bean.Dw15MinTjl" useCache="false">
+                SELECT * FROM dw_15min_tjl
+    </select>
+</mapper>

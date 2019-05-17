@@ -23,5 +23,18 @@
 		<setting name="defaultExecutorType" value="BATCH" /> -->
         <!-- 数据库超过25000秒仍未响应则超时 
 		<setting name="defaultStatementTimeout" value="25000" /> -->
+
+		<!-- 日志开启 -->
+		<setting name="logImpl" value="LOG4J"/>
+		<!-- 二级缓存开启 -->
+		<setting name="cacheEnabled" value="true"/>
+		<setting name="aggressiveLazyLoading" value="true"/>
 	</settings>
+
+	<!--  只需要定义个别名,这个应该有-->
+	<typeAliases >
+		<package name="com.common.bean"/>
+	</typeAliases>
+
+
 </configuration>
