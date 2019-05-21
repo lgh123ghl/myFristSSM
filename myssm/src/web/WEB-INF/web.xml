@@ -27,7 +27,38 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- 跨域过滤器-->
     <filter>
+        <filter-name>CORS</filter-name>
+        <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+        <init-param>
+            <param-name>cors.allowOrigin</param-name>
+            <param-value>*</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cors.supportedMethods</param-name>
+            <param-value>GET,POST,HEAD,PUT,DELETE,OPTION</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cors.supportedHeaders</param-name>
+            <param-value>eidpToken,accessToken,Accept,Origin,X-Requested-With,Content-Type,Last-Modified</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cors.exposedHeaders</param-name>
+            <param-value>Set-Cookie</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cors.supportsCredentials</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CORS</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+<!--配合com.common.util.CrossFilter这个类使用-->
+   <!-- <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
@@ -48,34 +79,23 @@
         <welcome-file>/index.html</welcome-file>
     </welcome-file-list>
 
-    <!-- 跨域过滤器-->
     <filter>
-        <filter-name>CORS</filter-name>
-        <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+        <filter-name>crossDomainFilter</filter-name>
+        <filter-class>com.common.util.CrossFilter</filter-class>
         <init-param>
-            <param-name>cors.allowOrigin</param-name>
-            <param-value>*</param-value>
-        </init-param>
-        <init-param>
-            <param-name>cors.supportedMethods</param-name>
-            <param-value>GET,POST,HEAD,PUT,DELETE,OPTION</param-value>
-        </init-param>
-        <init-param>
-            <param-name>cors.supportedHeaders</param-name>
-            <param-value>Accept,Origin,X-Requested-With,Content-Type,Last-Modified</param-value>
-        </init-param>
-        <init-param>
-            <param-name>cors.exposedHeaders</param-name>
-            <param-value>Set-Cookie</param-value>
-        </init-param>
-        <init-param>
-            <param-name>cors.supportsCredentials</param-name>
+            <param-name>targetFilterLifecycle</param-name>
             <param-value>true</param-value>
         </init-param>
     </filter>
+
     <filter-mapping>
-        <filter-name>CORS</filter-name>
-        <url-pattern>/*</url-pattern>
+        <filter-name>crossDomainFilter</filter-name>
+        <url-pattern>/*</url-pattern> &lt;!&ndash;可以针对某个接口进行限制&ndash;&gt;
     </filter-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.html</location>
+    </error-page>-->
 
 </web-app>
