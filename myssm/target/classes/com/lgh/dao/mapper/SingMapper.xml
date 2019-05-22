@@ -15,5 +15,14 @@
         F_LAT lat,
         REMARK remark
         FROM t_oomm_sign
+        <if test="page !=-1 and size != -1">
+            limit #{page},#{size}
+        </if>
+    </select>
+
+    <select id="getSignListTotal" resultType="int">
+        SELECT
+        COUNT(*) AS total
+        FROM t_oomm_sign
     </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.lgh.service;
 
+import com.common.bean.PageBean;
 import com.common.bean.Sign;
 
 import java.util.List;
@@ -10,5 +11,5 @@ import java.util.List;
  * @Description:
  */
 public interface SingService {
-    List<Sign> getSignList();
+    PageBean<Sign> getSignList(Integer page,Integer size);
 }

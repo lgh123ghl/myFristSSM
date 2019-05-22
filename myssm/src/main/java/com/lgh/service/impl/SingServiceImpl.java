@@ -1,5 +1,6 @@
 package com.lgh.service.impl;
 
+import com.common.bean.PageBean;
 import com.common.bean.Sign;
 import com.lgh.dao.SingDao;
 import com.lgh.service.SingService;
@@ -19,7 +20,13 @@ public class SingServiceImpl implements SingService {
     @Autowired
     private SingDao singDao;
     @Override
-    public List<Sign> getSignList() {
-        return singDao.getSignList();
+    public PageBean<Sign> getSignList(Integer page, Integer size) {
+        PageBean<Sign> signPageBean = new PageBean<Sign>();
+        List<Sign> signList = singDao.getSignList((page-1)*size,size);
+        signPageBean.setRows(signList);
+        signPageBean.setPage(page);
+        signPageBean.setSize(size);
+        signPageBean.setTotal(singDao.getSignListTotal());
+        return signPageBean;
     }
 }
