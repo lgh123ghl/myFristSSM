@@ -13,7 +13,17 @@ import java.util.List;
  */
 @Repository
 public interface SingDao {
+
+    /**
+     *  获取签到列表(含分页功能)
+     * @param page
+     * @param size
+     * @return
+     */
     List<Sign> getSignList(@Param("page") Integer page, @Param("size") Integer size);
 
+    /**  配合分页接口，返回数据总条数
+     * @return
+     */
     Integer getSignListTotal();
 }

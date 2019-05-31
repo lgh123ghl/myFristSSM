@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * @Auther: 李光辉
+ * @author: 李光辉
  * @Date: 2019/5/10 14:49
  * @Description:
  */

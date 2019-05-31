@@ -21,7 +21,7 @@ public class SingServiceImpl implements SingService {
     private SingDao singDao;
     @Override
     public PageBean<Sign> getSignList(Integer page, Integer size) {
-        PageBean<Sign> signPageBean = new PageBean<Sign>();
+        PageBean<Sign> signPageBean = new PageBean<>();
         List<Sign> signList = singDao.getSignList((page-1)*size,size);
         signPageBean.setRows(signList);
         signPageBean.setPage(page);
