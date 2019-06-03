@@ -1,8 +1,11 @@
 package com.common.bean;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Sign {
+public class Sign implements Serializable {
+  private static final long serialVersionUID = 6099897981942272360L;
+
   private Long id;
   private String userId;
   private String userName;
@@ -101,5 +104,22 @@ public class Sign {
 
   public void setRemark(String remark) {
     this.remark = remark;
+  }
+
+  @Override
+  public String toString() {
+    return "Sign{" +
+            "id=" + id +
+            ", userId='" + userId + '\'' +
+            ", userName='" + userName + '\'' +
+            ", signTime=" + signTime +
+            ", signType=" + signType +
+            ", stationId='" + stationId + '\'' +
+            ", stationName='" + stationName + '\'' +
+            ", address='" + address + '\'' +
+            ", lon=" + lon +
+            ", lat=" + lat +
+            ", remark='" + remark + '\'' +
+            '}';
   }
 }
