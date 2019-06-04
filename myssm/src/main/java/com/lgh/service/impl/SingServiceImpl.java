@@ -3,6 +3,7 @@ package com.lgh.service.impl;
 import com.common.bean.PageBean;
 import com.common.bean.Sign;
 import com.common.bean.SignDTO;
+import com.common.contants.InteractionConstants;
 import com.common.util.DateUtil;
 import com.lgh.dao.SingDao;
 import com.lgh.service.SingService;
@@ -36,8 +37,7 @@ public class SingServiceImpl implements SingService {
             signDTO.setLat(sign.getLat());
             signDTO.setLon(sign.getLon());
             signDTO.setSignType(sign.getSignType());
-            signDTO.setSignTime(dateUtil.formatDateToString(sign.getSignTime(),"yyyy-MM-dd HH:mm:ss"));
-
+            signDTO.setSignTime(dateUtil.formatDateToString(sign.getSignTime(), InteractionConstants.FORMAT_YMD_HMS));
             signDTOList.add(signDTO);
         }
         signPageBean.setRows(signDTOList);

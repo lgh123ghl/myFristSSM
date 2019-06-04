@@ -22,6 +22,7 @@ public class DateUtil {
     private DateFormat formatYear = new SimpleDateFormat(FORMAT_YEAR);
 
 
+
     /**
      * 将Date转String
      * @param date

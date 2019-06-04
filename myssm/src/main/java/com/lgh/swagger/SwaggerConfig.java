@@ -1,5 +1,6 @@
 package com.lgh.swagger;
 
+import com.common.util.PropertiesUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @ComponentScan(basePackages="com.lgh.controller")
 public class SwaggerConfig {
+    PropertiesUtil propertiesUtil = new PropertiesUtil("/bussconf.properties");
     @Bean
     public Docket petApi() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
@@ -27,6 +29,6 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("李光辉的 API").description("学习DEMO（SSM）方便线上测试，集成SWAGGER").termsOfServiceUrl("http://localhost:8080").version("1.0").build();
+        return new ApiInfoBuilder().title(propertiesUtil.getString("SWAGGER.TITEL")).description(propertiesUtil.getString("SWAGGER.DESCRIPTON")).termsOfServiceUrl(propertiesUtil.getString("SWAGGER.URL")).version(propertiesUtil.getString("SWAGGER.VERTION")).build();
     }
 }
