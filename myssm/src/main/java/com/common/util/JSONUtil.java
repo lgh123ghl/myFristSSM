@@ -2,12 +2,14 @@ package com.common.util;
 
 
 import com.common.bean.ParameterizedTypeImpl;
+import com.common.bean.Sign;
 import com.google.gson.*;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -17,13 +19,33 @@ public class JSONUtil {
     private static Gson gson;
     private static JsonParser jsonParser;
 
+
+    /**
+     * 如何用？？ 看mian函数
+     * @param args
+     */
     public static void main(String[] args) {
-        String xxx = "{\"cityKey\":[1,2],\"districtKey\":\"-1\",\"stationTypeKey\":\"-1\"}";
-        JsonObject jsonObject = getJsonObject(xxx);
+        String jsonStr = "{\"cityKey\":[1,2],\"districtKey\":\"-1\",\"stationTypeKey\":\"-1\"}";
+        JsonObject jsonObject = getJsonObject(jsonStr);
         JsonElement jsonElement = jsonObject.get("cityKey");
         String str = jsonElement.toString();
         JsonArray jsonArray = jsonElement.getAsJsonArray();
         System.out.println();
+
+        /**
+         * 将Json数据转JavaBean("Sign")
+         */
+        Sign sign = JSONUtil.getBean(jsonStr, Sign.class);
+        /**
+         * 根据key("stationId")获取某个字符串的value
+         */
+        String stationId = JSONUtil.getAsString(jsonObject, "stationId");
+        /**
+         * 根据key（"stationIds"）获取json数组(前端叫数组，json格式->"stationIds":["EB36B507E6AAE411FA18423A8938EEC2","EB36B507E6AAE411FA18423A8938EEC2"])
+         */
+        JsonArray stationIds = JSONUtil.getAsJsonArray(jsonObject,"stationIds");
+        //将json数组装Java的List
+        List<String> strings = JSONUtil.getStringValues(stationIds);
     }
 
 
@@ -238,5 +260,7 @@ public class JSONUtil {
     public static JsonArray getAsJsonArray(JsonObject jsonObject, String key) {
         return jsonObject.get(key).getAsJsonArray();
     }
+
+
 
 }
