@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * @Auther: LGH
+/** 过滤器工具类
+ * @author : LGH
  * @Date: 2019/5/20 16:05
  * @Description:
  */

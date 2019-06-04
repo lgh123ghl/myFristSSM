@@ -3,13 +3,16 @@ package com.common.util;
 
 import com.common.bean.ParameterizedTypeImpl;
 import com.google.gson.*;
-
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
+/**
+ * Json 工具类
+ */
 public class JSONUtil {
     private static Gson gson;
     private static JsonParser jsonParser;

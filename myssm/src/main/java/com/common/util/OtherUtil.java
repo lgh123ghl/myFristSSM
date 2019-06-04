@@ -1,15 +1,8 @@
 package com.common.util;
 
-import com.common.bean.PageBean;
-import com.common.bean.Sign;
-import net.sf.ehcache.util.SetAsList;
-import org.apache.poi.ss.formula.functions.T;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * @Auther: LGH
+/**  其他工具类
+ * @author : LGH
  * @Date: 2019/5/29 16:55
  * @Description:
  */

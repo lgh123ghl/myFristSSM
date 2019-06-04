@@ -8,8 +8,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @Auther: 李光辉
+/**  Http访问接口工具类
+ * @author : 李光辉
  * @Date: 2019/3/18 10:17
  * @Description:
  */

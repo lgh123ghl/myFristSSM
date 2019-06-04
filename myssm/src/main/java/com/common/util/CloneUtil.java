@@ -6,8 +6,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-/**
- * @Auther: LGH
+/** 深度复制工具类
+ * @author : LGH
  * @Date: 2019/6/3 16:36
  * @Description:
  */

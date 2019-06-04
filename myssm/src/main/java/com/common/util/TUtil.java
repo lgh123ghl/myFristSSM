@@ -6,6 +6,10 @@ import org.apache.poi.ss.formula.functions.T;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * @Auther: LGH
@@ -51,6 +55,6 @@ public class TUtil<T> {
         sign4.setAddress("北京");
         signList.add(sign4);
 
-       // PageBean<Sign> signPageBean = tUtil.beanPage(signList,1,2);
+        // PageBean<Sign> signPageBean = tUtil.beanPage(signList,1,2);
     }
 }
