@@ -11,6 +11,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * @author LGH
+ */
 @Configuration
 @EnableWebMvc
 @EnableSwagger2
@@ -24,6 +27,6 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("李光辉的 API").description("").termsOfServiceUrl("http://localhost:8080").version("1.0").build();
+        return new ApiInfoBuilder().title("李光辉的 API").description("学习DEMO（SSM）方便线上测试，集成SWAGGER").termsOfServiceUrl("http://localhost:8080").version("1.0").build();
     }
 }

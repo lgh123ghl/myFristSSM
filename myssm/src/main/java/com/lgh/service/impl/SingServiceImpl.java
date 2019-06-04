@@ -2,11 +2,14 @@ package com.lgh.service.impl;
 
 import com.common.bean.PageBean;
 import com.common.bean.Sign;
+import com.common.bean.SignDTO;
+import com.common.util.DateUtil;
 import com.lgh.dao.SingDao;
 import com.lgh.service.SingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,13 +20,27 @@ import java.util.List;
 @Service
 public class SingServiceImpl implements SingService {
 
+    private DateUtil dateUtil = new DateUtil();
+
     @Autowired
     private SingDao singDao;
     @Override
-    public PageBean<Sign> getSignList(Integer page, Integer size) {
-        PageBean<Sign> signPageBean = new PageBean<>();
+    public PageBean<SignDTO> getSignList(Integer page, Integer size) {
+        PageBean<SignDTO> signPageBean = new PageBean<>();
         List<Sign> signList = singDao.getSignList((page-1)*size,size);
-        signPageBean.setRows(signList);
+        List<SignDTO> signDTOList = new ArrayList<>();
+        for (Sign sign:signList) {
+            SignDTO signDTO = new SignDTO();
+            signDTO.setUserId(sign.getUserId());
+            signDTO.setAddress(sign.getAddress());
+            signDTO.setLat(sign.getLat());
+            signDTO.setLon(sign.getLon());
+            signDTO.setSignType(sign.getSignType());
+            signDTO.setSignTime(dateUtil.formatDateToString(sign.getSignTime(),"yyyy-MM-dd HH:mm:ss"));
+
+            signDTOList.add(signDTO);
+        }
+        signPageBean.setRows(signDTOList);
         signPageBean.setPage(page);
         signPageBean.setSize(size);
         signPageBean.setTotal(singDao.getSignListTotal());

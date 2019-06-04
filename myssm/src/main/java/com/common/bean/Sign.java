@@ -1,6 +1,9 @@
 package com.common.bean;
 
+import com.common.util.DateUtil;
+
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Sign implements Serializable {
@@ -9,7 +12,7 @@ public class Sign implements Serializable {
   private Long id;
   private String userId;
   private String userName;
-  private java.sql.Timestamp signTime;
+  private Date signTime;
   private Long signType;
   private String stationId;
   private String stationName;
@@ -17,6 +20,11 @@ public class Sign implements Serializable {
   private Double lon;
   private Double lat;
   private String remark;
+
+
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
 
   public Long getId() {
     return id;
@@ -42,11 +50,11 @@ public class Sign implements Serializable {
     this.userName = userName;
   }
 
-  public Timestamp getSignTime() {
+  public Date getSignTime() {
     return signTime;
   }
 
-  public void setSignTime(Timestamp signTime) {
+  public void setSignTime(Date signTime) {
     this.signTime = signTime;
   }
 

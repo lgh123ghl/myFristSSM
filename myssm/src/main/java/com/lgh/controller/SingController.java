@@ -2,6 +2,7 @@ package com.lgh.controller;
 
 import com.common.bean.PageBean;
 import com.common.bean.Sign;
+import com.common.bean.SignDTO;
 import com.lgh.service.impl.SingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import java.util.List;
  * @Date: 2019/5/10 14:49
  * @Description:
  */
-@RequestMapping("/sing")
+@RequestMapping("/sign")
 @Controller
 public class SingController {
     @Autowired
@@ -25,7 +26,7 @@ public class SingController {
 
     @RequestMapping(value = "/getSignList", method = {RequestMethod.POST})
     @ResponseBody
-    public PageBean<Sign> getSignList(@RequestParam(value = "page",required = false,defaultValue = "-1") Integer page, @RequestParam(value = "size",required = false,defaultValue = "-1") Integer size){
+    public PageBean<SignDTO> getSignList(@RequestParam(value = "page",required = false,defaultValue = "-1") Integer page, @RequestParam(value = "size",required = false,defaultValue = "-1") Integer size){
         return singService.getSignList(page,size);
     }
 }
