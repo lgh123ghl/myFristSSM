@@ -19,7 +19,7 @@
         <gson.version>2.3.1</gson.version>
         <alibaba.fastjson.version>1.1.41</alibaba.fastjson.version>
         <alibaba.druid.version>1.0.9</alibaba.druid.version>
-        <poi.version>3.15</poi.version>
+        <poi.version>4.1.2</poi.version>
         <jxl.version>2.6.8</jxl.version>
         <xmlschema.version>2.0.3</xmlschema.version>
         <jsp.version>2.0</jsp.version>
