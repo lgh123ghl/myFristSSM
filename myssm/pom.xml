@@ -9,7 +9,7 @@
         <!-- 编译的JDK版本 -->
         <jdk.version>1.7</jdk.version>
         <codehaus.jackson.version>1.9.13</codehaus.jackson.version>
-        <fasterxml.jackson.version>2.5.3</fasterxml.jackson.version>
+        <fasterxml.jackson.version>2.12.7.1</fasterxml.jackson.version>
         <fasterxml.jackson.annotations.version>2.5.0</fasterxml.jackson.annotations.version>
         <servletapi.version>2.5</servletapi.version>
         <jspapi.version>2.1</jspapi.version>
